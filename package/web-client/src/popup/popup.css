@@ -1,0 +1,19 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  border-radius: 2px;
+}
+.popup-container {
+  height: 233px;
+  width: 230px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10px;
+  justify-content: center;
+}
+.logo-popup {
+  height: 24px;
+  margin-top: 15px;
+}

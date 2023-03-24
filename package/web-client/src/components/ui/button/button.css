@@ -1,0 +1,54 @@
+.rounded {
+  border-radius: 18px;
+}
+.normal-round {
+  border-radius: 9px;
+}
+.sentinel-button-container {
+  padding: 10px;
+  border: none;
+  outline: none !important;
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.sentinel-primary {
+  height: 56px;
+  width: 46%;
+  min-width: 290px;
+  background-color: #6d3fe2;
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+}
+.sentinel-default {
+  background-color: #6d3fe2;
+  height: 38px;
+  width: 180px;
+  font-size: 16px;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 0 !important;
+}
+.sentinel-outline {
+  background-color: rgba(67, 56, 202, 0.13);
+  color: #4338ca;
+  height: 56px;
+  width: 46%;
+  font-size: 20px;
+  min-width: 290px;
+  font-weight: 500;
+}
+.sentinel-button-container svg {
+  margin-left: 5px;
+}
+@media screen and (max-width: 920px) {
+  .background-popup-container .btn-container {
+    justify-content: center;
+  }
+  .sentinel-button-container {
+    min-width: 100%;
+    margin-bottom: 20px;
+  }
+}
