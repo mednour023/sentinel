@@ -3,8 +3,11 @@ import "../index.css";
 import PolygonAlert from "./polygon-alert";
 import { Button } from "../components/ui/button";
 import CheckIcon from "./check";
+import { useReportedPages } from "../../api";
 
 const ContentScript = () => {
+  const {data , isSuccess ,refetch , isLoading , isFetching } = useReportedPages();
+  console.log('reported page data', window.location.origin)
   //
   return (
     <div className="cs-container">

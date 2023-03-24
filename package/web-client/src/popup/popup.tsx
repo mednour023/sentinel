@@ -3,7 +3,11 @@ import { createRoot } from "react-dom/client";
 import "./popup.css";
 import "../index.css";
 import { Button } from "../components/ui/button";
+import {useAddReportedUrl } from '../../api'
 
+// const addPage = () => {
+//   useAddReportedUrl()
+// }
 const popup = (
   <div className="popup-container" >
     <img src='../icons/sentinel.png' alt='sentinel' />
