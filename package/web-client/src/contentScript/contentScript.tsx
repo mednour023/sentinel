@@ -6,9 +6,9 @@ import CheckIcon from "./check";
 import { useReportedPages } from "../../api";
 
 const ContentScript = () => {
-  const {data , isSuccess ,refetch , isLoading , isFetching } = useReportedPages();
-  console.log('reported page data', window.location.origin)
-  //
+  const { data, isSuccess, refetch, isLoading, isFetching } =
+    useReportedPages();
+
   return (
     <div className="cs-container">
       <div className="background-popup-container">
@@ -21,8 +21,8 @@ const ContentScript = () => {
             title={"Visit the real website"}
             variant={"sentinel-primary"}
             rounded={false}
-            >
-              <CheckIcon />
+          >
+            <CheckIcon />
           </Button>
           <Button
             title={"Continue Anyways"}

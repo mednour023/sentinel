@@ -31,8 +31,13 @@ export class PagesController {
     return pages;
   }
 
-  @Get(':id')
-  getPage(@Param('id') pageId: string) {
-    return this.pagesService.getSinglePage(pageId);
+  // @Get(':id')
+  // getPage(@Param('id') pageId: string) {
+  //   return this.pagesService.getSinglePage(pageId);
+  // }
+
+  @Get(':url')
+  getPageUrl(@Param('url') pageUrl: string) {
+    return this.pagesService.getSinglePageUrl(pageUrl);
   }
 }

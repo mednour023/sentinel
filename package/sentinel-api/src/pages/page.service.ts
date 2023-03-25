@@ -31,12 +31,34 @@ export class PagesService {
     return page;
   }
 
+  async getSinglePageUrl(url: string) {
+    const page = await this.findPageByUrl(url);
+    return page;
+  }
+
   private async findPage(id: string): Promise<Page> {
     let page;
     try {
       page = await this.pagesModel.findById(id);
     } catch (error) {
       throw new NotFoundException('page not found.');
+    }
+    if (!page) {
+      throw new NotFoundException('page not found.');
+    }
+    return {
+      id: page.id,
+      url: page.url,
+      register_count: page.register_count,
+    };
+  }
+
+  private async findPageByUrl(url: string): Promise<Page> {
+    let page;
+    try {
+      page = await this.pagesModel.findOne({url});
+    } catch (error) {
+      throw new NotFoundException('catch page not found.');
     }
     if (!page) {
       throw new NotFoundException('page not found.');
