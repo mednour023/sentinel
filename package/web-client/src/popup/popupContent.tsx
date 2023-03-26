@@ -5,15 +5,13 @@ import { Button } from "../components/ui/button";
 import { useAddReportedUrl } from "../../api";
 
 const PopupContent = () => {
-  const { mutateAsync: useAddPageAsync,isLoading } = useAddReportedUrl();
-  const addPage =  () => {
-
+  const { mutateAsync: useAddPageAsync, isLoading } = useAddReportedUrl();
+  const addPage = () => {
     chrome.tabs.query({ active: true }, async (tabs) => {
       const tab = tabs[0];
-      let originUrl = tab.url.replace(/^https?:\/\//, '').split('/')[0]
+      let originUrl = tab.url.replace(/^https?:\/\//, "").split("/")[0];
       await useAddPageAsync({ url: originUrl, register_count: 1 });
     });
-    
   };
   return (
     <div className="popup-container">
@@ -24,11 +22,12 @@ const PopupContent = () => {
         variant={"sentinel-default"}
       />
       <Button
+        isLoading={isLoading}
         title={"Report website"}
         rounded={true}
         variant={"sentinel-default"}
         onHandleClick={addPage}
-        disabled={true}
+        disabled={isLoading}
       />
       <img src="../icons/logoApp.png" alt="logo" className="logo-popup" />
     </div>
