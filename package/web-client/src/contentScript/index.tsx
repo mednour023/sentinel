@@ -1,9 +1,9 @@
 import React from "react";
 
 import { createRoot } from "react-dom/client";
-
 import "../index.css";
-import ContentScript from './contentScript' 
+import ContentScript from "./contentScript";
+import APIProvider from "../../api/APIProvider";
 
 const init = () => {
   const appContainer = document.createElement("div");
@@ -13,7 +13,11 @@ const init = () => {
   document.body.appendChild(appContainer);
   const root = createRoot(appContainer);
   console.log("appContainer", appContainer);
-  root.render(<ContentScript />);
+  root.render(
+    <APIProvider>
+      <ContentScript />
+    </APIProvider>
+  );
 };
 
 init();

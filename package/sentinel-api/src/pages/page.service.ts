@@ -28,23 +28,55 @@ export class PagesService {
 
   async getSinglePage(pageId: string) {
     const page = await this.findPage(pageId);
+    return { id: page.id, url: page.url, register_count: page.register_count };
+  }
+
+  async updatePage(pageId: string, url: string, register_count: number) {
+    const updatedPage = await this.findPage(pageId);
+    if (url) {
+      updatedPage.url = url;
+    }
+    if (register_count) {
+      updatedPage.register_count = register_count;
+    }
+    updatedPage.save();
+  }
+
+  async deletePage(pageId: string) {
+    const result = await this.pagesModel.deleteOne({ _id: pageId }).exec();
+    if (result.deletedCount === 0) {
+      throw new NotFoundException('page not found.');
+    }
+  }
+
+  async getSinglePageUrl(url: string) {
+    const page = await this.findPageByUrl(url);
     return page;
   }
 
   private async findPage(id: string): Promise<Page> {
     let page;
     try {
-      page = await this.pagesModel.findById(id);
+      page = await this.pagesModel.findById(id).exec();
     } catch (error) {
       throw new NotFoundException('page not found.');
     }
     if (!page) {
       throw new NotFoundException('page not found.');
     }
-    return {
-      id: page.id,
-      url: page.url,
-      register_count: page.register_count,
-    };
+    return page;
+  }
+
+  private async findPageByUrl(url: string): Promise<Page> {
+    let page;
+    try {
+      page = await this.pagesModel.findOne({ url }).exec();
+    } catch (error) {
+      throw new NotFoundException('catch page not found.');
+    }
+    if (!page) {
+      throw new NotFoundException('page not found.');
+    }
+    return page;
   }
 }

@@ -4,7 +4,7 @@ export const PageSchema = new mongoose.Schema({
   url: { type: String, required: true },
   register_count: { type: Number, required: true },
 });
-export interface Page {
+export interface Page extends mongoose.Document {
   id: string;
   url: string;
   register_count: number;
