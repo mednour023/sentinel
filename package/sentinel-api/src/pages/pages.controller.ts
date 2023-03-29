@@ -31,13 +31,34 @@ export class PagesController {
     return pages;
   }
 
-  // @Get(':id')
-  // getPage(@Param('id') pageId: string) {
-  //   return this.pagesService.getSinglePage(pageId);
+  // @Post('getUrl')
+  // getPageUrl( @Body('url') url: string,) {
+  //   return this.pagesService.getSinglePageUrl(url);
   // }
 
-  @Get(':url')
-  getPageUrl(@Param('url') pageUrl: string) {
-    return this.pagesService.getSinglePageUrl(pageUrl);
+  @Get('getUrl/:url')
+  getPageUrl( @Param('url') url: string,) {
+    return this.pagesService.getSinglePageUrl(url);
   }
+
+  @Get(':id')
+  getPage(@Param('id') pageId: string) {
+    return this.pagesService.getSinglePage(pageId);
+  }
+
+  @Patch(':id')
+  async updatePage(
+    @Param('id') pageId: string,
+    @Body('url') pageUrl: string,
+    @Body('register_count') pageCount: number,
+  ) {
+    await this.pagesService.updatePage(pageId, pageUrl, pageCount);
+    return null;
+  }
+
+  @Delete(':id')
+  async removePage(@Param('id') pageId: string) {
+    await this.pagesService.deletePage(pageId);
+  }
+
 }
